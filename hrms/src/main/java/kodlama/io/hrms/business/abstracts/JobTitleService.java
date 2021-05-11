@@ -7,4 +7,5 @@ import kodlama.io.hrms.entities.concretes.JobTitle;
 public interface JobTitleService {
 
 	List<JobTitle> getAll();
+	
 }

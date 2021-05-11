@@ -25,5 +25,6 @@ public class JobTitleManager implements JobTitleService {
 		
 		return this.jobTitleDao.findAll();
 	}
+	
 
 }
