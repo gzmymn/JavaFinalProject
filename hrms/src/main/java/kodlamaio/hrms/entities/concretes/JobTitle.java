@@ -1,4 +1,4 @@
-package kodlama.io.hrms.entities.concretes;
+package kodlamaio.hrms.entities.concretes;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
