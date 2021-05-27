@@ -37,11 +37,11 @@ public class UserManager<T extends User> implements UserService<T> {
 	public Result add(T t) {
 		Result result = BusinessEngine.run(isEmailExist(t.getEmail())) ;
 		if (!result.isSuccess()) {
-			return result;
+			t.setUid(CodeGenerator.generateUuidCode());
+			this.userDao.save(t);
+			return new SuccessResult("User Added.");			
 		}
-		t.setUid(CodeGenerator.generateUuidCode());
-		this.userDao.save(t);
-		return new SuccessResult("User Added.");
+		return result;
 	}
 	
 	public Result isEmailExist(String email) {
