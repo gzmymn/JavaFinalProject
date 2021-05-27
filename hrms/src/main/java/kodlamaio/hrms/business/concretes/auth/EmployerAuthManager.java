@@ -59,7 +59,7 @@ public class EmployerAuthManager implements EmployerAuthService {
 			return codeAddResult;			
 		}
 		
-		emailSenderService.send("Doğrulama için linke tıklayınız : https://dogrulama.deneme/" + code);
+		emailSenderService.send("Doğrulama için linke tıklayınız : http://localhost:8080/api/auth/verify?activationCode="+code+"&userId="+addResult.getData().getId());
 		
 		return new SuccessResult("Kullanıcı eklendi.");
 	}

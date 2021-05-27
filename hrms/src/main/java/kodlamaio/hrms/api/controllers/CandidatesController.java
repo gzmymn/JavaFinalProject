@@ -30,8 +30,5 @@ public class CandidatesController {
 		return this.candidateService.getAll();	
 	}
 	
-	@PostMapping("/add")
-	public Result add(@RequestBody Candidate candidate) {
-		return candidateService.add(candidate);
-	}
+	
 }

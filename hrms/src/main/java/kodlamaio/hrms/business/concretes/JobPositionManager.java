@@ -12,6 +12,7 @@ import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
 import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
 import kodlamaio.hrms.core.utilities.results.SuccessResult;
+import kodlamaio.hrms.core.utilities.verifyTool.CodeGenerator;
 import kodlamaio.hrms.dataAccess.abstracts.JobPositionDao;
 import kodlamaio.hrms.entities.concretes.JobPosition;
 
@@ -39,6 +40,7 @@ public class JobPositionManager implements JobPositionService {
 		Result result = BusinessEngine.run(positionNullControl(jobPosition), positionRepeatControl(jobPosition));
 		
 		if (result.isSuccess()) {
+			jobPosition.setUid(CodeGenerator.generateUuidCode());
 			jobPositionDao.save(jobPosition);
 			return new SuccessResult("Job Position eklendi.");
 		}
