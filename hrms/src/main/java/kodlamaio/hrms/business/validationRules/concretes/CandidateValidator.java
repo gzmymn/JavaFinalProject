@@ -15,7 +15,6 @@ import kodlamaio.hrms.entities.concretes.Candidate;
 public class CandidateValidator extends UserValidator implements CandidateValidatorService {
 
 	
-	
 	@Override
 	public Result candidateNullCheck(Candidate candidate) {
 		
@@ -32,6 +31,14 @@ public class CandidateValidator extends UserValidator implements CandidateValida
 			return new ErrorResult("Değerler boş bırakılamaz!");
 		}
 		return new SuccessResult();
+	}
+
+	@Override
+	public Result nationalIdValid(String nationalIdentity) {
+		if (nationalIdentity.length()==11) {
+			return new SuccessResult();
+		}
+		return new ErrorResult("Tc No geeçrsiz!");
 	}
 
 }

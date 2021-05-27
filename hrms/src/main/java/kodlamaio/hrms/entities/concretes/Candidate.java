@@ -24,6 +24,15 @@ import lombok.NoArgsConstructor;
 @Table(name = "candidates")
 public class Candidate extends User {
 
+	public Candidate(String firstName, String lastName, String nationalIdentity, LocalDate dateOfBirth, String email, String password)
+    {
+        super(email,password);
+        this.firstName=firstName;
+        this.lastName=lastName;
+        this.nationalIdentity=nationalIdentity;
+        this.dateOfBirth=dateOfBirth;
+    }
+	
 	@Column(name="first_name")
 	private String firstName;
 	

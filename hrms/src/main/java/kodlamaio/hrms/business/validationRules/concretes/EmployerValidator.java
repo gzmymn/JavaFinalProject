@@ -39,5 +39,28 @@ public class EmployerValidator extends UserValidator implements EmployerValidato
 		
 		return new ErrorResult();
 	}
-
+	
+	/*private Result emailExist(String email) {
+		if(employerDao.findAllByEmail(email).stream().count()!= 0) {
+			return new ErrorResult("bu e mail mevcut");
+		}
+		return new SuccessResult();
+	}
+	*/
+	
+	/*private Result isRealEmployer(Employer employer) {
+		
+		 String regex = "^(.+)@(.+)$";
+	     Pattern pattern = Pattern.compile(regex);
+	     Matcher matcher = pattern.matcher(employer.getEmail());
+		
+		if(!employer.getEmail().contains(employer.getWebAddress())) {
+			return new ErrorResult("domain aynı değil");
+		}
+		else if(matcher.matches()) {
+			return new ErrorResult("");
+		}
+		return new SuccessResult();		
+	}
+	*/
 }

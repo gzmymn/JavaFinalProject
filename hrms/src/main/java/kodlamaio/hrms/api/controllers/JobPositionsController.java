@@ -20,7 +20,7 @@ import kodlamaio.hrms.entities.concretes.JobPosition;
 @RequestMapping("/api/positions")
 public class JobPositionsController {
 
-	private JobPositionService jobPositionService;
+	private final JobPositionService jobPositionService;
 
 	@Autowired
 	public JobPositionsController(JobPositionService jobPositionService) {

@@ -1,7 +1,7 @@
 package kodlamaio.hrms.entities.abstracts;
 
-import java.sql.Date;
 
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +12,6 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import lombok.AllArgsConstructor;
@@ -27,24 +26,31 @@ import lombok.NoArgsConstructor;
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class User {
 
+	public User(String email, String password) {
+		this.email=email;
+		this.password=password;
+	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
 	
+	@Column(name = "uid")
+	private String uid;
+	
 	@Column(name = "email")
 	private String email;
 	
 	@Column(name = "password")
-	private String password;
+	private String password;	
 	
-	@CreatedDate
 	@Column(name = "created_date")
-	private Date createdDate;
+	private LocalDateTime createdDate=LocalDateTime.now();
 	
 	@LastModifiedDate
 	@Column(name = "updated_date")
-	private Date updatedDate;
+	private LocalDateTime updatedDate;
 	
 	@Column(name = "status")
 	private boolean status;

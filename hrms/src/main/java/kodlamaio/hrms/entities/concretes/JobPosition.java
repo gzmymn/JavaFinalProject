@@ -1,7 +1,7 @@
 package kodlamaio.hrms.entities.concretes;
 
-import java.sql.Date;
 
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 
@@ -11,22 +11,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name="job_positions")
 public class JobPosition {
 	
-	public JobPosition(String position) {
-		super();
-		this.position=position;
-	}
+	
 	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)	
@@ -35,16 +31,17 @@ public class JobPosition {
 	
 	@Column(name="title")
 	private String position;
-	
-	@CreatedDate
+		
 	@Column(name = "created_date")
-	private Date createdDate;
-	
-	@LastModifiedDate
+	private LocalDateTime createdDate=LocalDateTime.now();
+		
 	@Column(name = "updated_date")
-	private Date updatedDate;
+	private LocalDateTime updatedDate;
 	
 	@Column(name = "status")
 	private boolean status;
+	
+	@Column(name = "uid")
+	private String uid;
 
 }
