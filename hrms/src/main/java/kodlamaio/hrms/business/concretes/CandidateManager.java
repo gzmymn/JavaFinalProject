@@ -29,39 +29,38 @@ public class CandidateManager extends UserManager<Candidate>  implements Candida
 		super(userDao);
 		this.candidateDao=(CandidateDao) userDao;
 		this.userRealCheckService=userRealCheckService;
-		this.candidateValidatorService=candidateValidatorService;
-		
+		this.candidateValidatorService=candidateValidatorService;		
 	}
 	
 	@Override
-    public Result add(Candidate candidate) {
+	    public Result add(Candidate candidate) {
+			
+			Result result = BusinessEngine.run(isIdentityNumberExist(candidate.getNationalIdentity()),
+	                isMernisVerified(candidate),candidateValidatorService.candidateNullCheck(candidate),
+	                candidateValidatorService.nationalIdValid(candidate.getNationalIdentity()));
+	        if (!result.isSuccess()) {
+	            
+	        	return result;
+	        }        
+	    return super.add(candidate);
+	    }
 		
-		Result result = BusinessEngine.run(isIdentityNumberExist(candidate.getNationalIdentity()),
-                isMernisVerified(candidate),candidateValidatorService.candidateNullCheck(candidate),
-                candidateValidatorService.nationalIdValid(candidate.getNationalIdentity()));
-        if (!result.isSuccess()) {
-            
-        	return result;
-        }        
-    return super.add(candidate);
-    }
-	
-    private Result isIdentityNumberExist(String identityNumber) {
-        if (candidateDao.findByNationalIdentity(identityNumber).isPresent()) {
-            return new ErrorResult("Kimlik numarası zaten mevcut!");
-        }
-        return new SuccessResult();
-    }
-    
-    private Result isMernisVerified(Candidate candidate) {
-        MernisPerson mernisPerson = new MernisPerson(candidate.getFirstName(), candidate.getLastName(),
-                candidate.getNationalIdentity(), candidate.getDateOfBirth());
-        boolean result = userRealCheckService.validate(mernisPerson);
-        
-        if(result){
-            return new SuccessResult();
-        }      
-        return new ErrorResult("Kişi doğrulaması yapılamadı!");
-    }
+	    private Result isIdentityNumberExist(String identityNumber) {
+	        if (candidateDao.findByNationalIdentity(identityNumber).isPresent()) {
+	            return new ErrorResult("Kimlik numarası zaten mevcut!");
+	        }
+	        return new SuccessResult();
+	    }
+	    
+	    private Result isMernisVerified(Candidate candidate) {
+	        MernisPerson mernisPerson = new MernisPerson(candidate.getFirstName(), candidate.getLastName(),
+	                candidate.getNationalIdentity(), candidate.getDateOfBirth());
+	        boolean result = userRealCheckService.validate(mernisPerson);
+	        
+	        if(result){
+	            return new SuccessResult();
+	        }      
+	        return new ErrorResult("Kişi doğrulaması yapılamadı!");
+	    }
 	
 }
