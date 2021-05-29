@@ -39,8 +39,8 @@ public class Candidate extends User {
 	private String lastName;
 	
 	@Column(name="national_identity")
-    private String nationalIdentity;
+	private String nationalIdentity;
 	
 	@Column(name="date_of_birth")
-    private Date dateOfBirth;
+	private Date dateOfBirth;
 }

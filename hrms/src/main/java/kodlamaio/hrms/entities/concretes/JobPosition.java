@@ -46,7 +46,7 @@ public class JobPosition {
 	private String uid;
 	
 	@Column(name= "is_deleted")
-    private boolean isDeleted=false;
+	private boolean isDeleted=false;
 
     @Column(name="is_activated")
     private boolean isActivated;
