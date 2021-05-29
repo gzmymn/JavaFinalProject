@@ -27,8 +27,8 @@ import lombok.NoArgsConstructor;
 public abstract class User {
 
 	public User(String email, String password) {
-		this.email=email;
-		this.password=password;
+		this.email = email;
+		this.password = password;
 	}
 	
 	@Id
@@ -52,6 +52,9 @@ public abstract class User {
 	@Column(name = "updated_date")
 	private LocalDateTime updatedDate;
 	
-	@Column(name = "status")
-	private boolean status;
+	@Column(name= "is_deleted")
+    private boolean isDeleted;
+
+    @Column(name="is_activated")
+    private boolean isActivated;
 }

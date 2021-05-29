@@ -8,5 +8,5 @@ import kodlamaio.hrms.entities.concretes.ActivationCode;
 
 public interface ActivationCodeDao extends JpaRepository<ActivationCode, Integer>{
 
-	Optional<ActivationCode> findByUserId(Integer userId);
+	Optional<ActivationCode> findByUserUid(String uid);
 }

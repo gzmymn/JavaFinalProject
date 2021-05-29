@@ -16,5 +16,11 @@ public class UserValidator implements UserValidatorService {
 		}
 		return new SuccessResult();
 	}
+	
+	//if (Strings.isNullOrEmpty(user.getEmail()) || Strings.isNullOrEmpty(user.getPassword())) {
+    //    return new ErrorResult(Messages.notNull);
+    //}
+    //return new SuccessResult();
+//}
 
 }

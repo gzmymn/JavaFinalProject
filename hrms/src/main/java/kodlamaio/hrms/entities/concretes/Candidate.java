@@ -1,9 +1,8 @@
 package kodlamaio.hrms.entities.concretes;
 
 
+import java.sql.Date;
 import java.time.LocalDate;
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -24,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "candidates")
 public class Candidate extends User {
 
-	public Candidate(String firstName, String lastName, String nationalIdentity, LocalDate dateOfBirth, String email, String password)
+	public Candidate(String firstName, String lastName, String nationalIdentity, Date dateOfBirth, String email, String password)
     {
         super(email,password);
         this.firstName=firstName;
@@ -43,5 +42,5 @@ public class Candidate extends User {
     private String nationalIdentity;
 	
 	@Column(name="date_of_birth")
-    private LocalDate dateOfBirth;
+    private Date dateOfBirth;
 }

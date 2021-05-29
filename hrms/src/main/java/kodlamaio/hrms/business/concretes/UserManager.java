@@ -30,24 +30,30 @@ public class UserManager<T extends User> implements UserService<T> {
 	@Override
 	public DataResult<List<T>> getAll() {
 		
-		return new SuccessDataResult<List<T>>(this.userDao.findAll(), "User Listed.");
+		return new SuccessDataResult<List<T>>(this.userDao.findAll(), "Kullanıcılar Listendi.");
 	}
 
 	@Override
 	public Result add(T t) {
+		
 		Result result = BusinessEngine.run(isEmailExist(t.getEmail())) ;
+		
 		if (!result.isSuccess()) {
-			t.setUid(CodeGenerator.generateUuidCode());
-			this.userDao.save(t);
-			return new SuccessResult("User Added.");			
+			
+			return result;				
 		}
-		return result;
+		
+		t.setUid(CodeGenerator.generateUuidCode());
+		this.userDao.save(t);
+		return new SuccessResult("Kullanıcı Eklendi.");		
 	}
 	
 	public Result isEmailExist(String email) {
+		
 		if (userDao.findByEmail(email).isPresent()) {
 			return new ErrorResult("Email adresi zaten mevcut!");
 		}
+		
 		return new SuccessResult();
 	}
 

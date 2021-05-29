@@ -30,14 +30,14 @@ public class JobPositionManager implements JobPositionService {
 	@Override
 	public DataResult<List<JobPosition>> getAll() {
 		
-		return new SuccessDataResult<List<JobPosition>>(this.jobPositionDao.findAll(), "Data listelendi.");
+		return new SuccessDataResult<List<JobPosition>>(this.jobPositionDao.findAll(), "Job Positions listelendi.");
 	}	
 	
 
 	@Override
 	public Result add(JobPosition jobPosition) {
 		
-		Result result = BusinessEngine.run(positionNullControl(jobPosition), positionRepeatControl(jobPosition));
+		Result result = BusinessEngine.run(isPositionNullCheck(jobPosition), isPositionRepeatControl(jobPosition));
 		
 		if (result.isSuccess()) {
 			jobPosition.setUid(CodeGenerator.generateUuidCode());
@@ -49,20 +49,22 @@ public class JobPositionManager implements JobPositionService {
 	}
 	
 	
-	private Result positionNullControl(JobPosition jobPosition) {
+	private Result isPositionNullCheck(JobPosition jobPosition) {
 		if (jobPosition.getPosition()==null || jobPosition.getPosition().isBlank()) {
 			return new ErrorResult("Pozisyonlar boş bırakılamaz.");
 		}
 		return new SuccessResult();
 	}
 	
-	private Result positionRepeatControl(JobPosition jobPosition) {
-		if (jobPositionDao.findByPosition(jobPosition.getPosition()).stream().count() != 0) {
-			return new ErrorResult("Girilen pozisyon zaten mevcut!");
-		}
-		return new SuccessResult();
-		}
+	private Result isPositionRepeatControl(JobPosition jobPosition) {
+		
+		if(jobPositionDao.findByPosition(jobPosition.getPosition()).isPresent()){
+            return new ErrorResult("Girilen pozisyon adı zaten mevcut, yeni bir pozisyon adı giriniz.");
+        }
+        return new SuccessResult();
 	}
+	
+}	
 	
 
 

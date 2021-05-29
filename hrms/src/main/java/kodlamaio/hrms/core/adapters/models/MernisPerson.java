@@ -1,5 +1,6 @@
 package kodlamaio.hrms.core.adapters.models;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 
@@ -15,5 +16,5 @@ public class MernisPerson {
 	private String firstName;
 	private String lastName;
 	private String identificationNumber;
-	private LocalDate birthyear;
+	private Date birthyear;
 }

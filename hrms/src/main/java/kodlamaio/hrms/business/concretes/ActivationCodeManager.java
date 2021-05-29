@@ -1,4 +1,4 @@
-package kodlamaio.hrms.business.concretes.auth;
+package kodlamaio.hrms.business.concretes;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -50,9 +50,9 @@ public class ActivationCodeManager implements ActivationCodeService{
 	}
 
 	@Override
-	public DataResult<Optional<ActivationCode>> getByUserId(int userId) {
+	public DataResult<Optional<ActivationCode>> getByUserUid(String uid) {
 		
-		return new SuccessDataResult<Optional<ActivationCode>>(activationCodeDao.findByUserId(userId));
+		return new SuccessDataResult<Optional<ActivationCode>>(activationCodeDao.findByUserUid(uid));
 	}
 
 }

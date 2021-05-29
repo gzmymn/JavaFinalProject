@@ -1,11 +1,9 @@
 package kodlamaio.hrms.entities.concretes;
 
-
-import java.time.LocalDateTime;
 import java.util.List;
 
-import javax.persistence.Column;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,35 +22,23 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="job_positions")
+@Table(name = "cities")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler","jobPostings"})
-public class JobPosition {	
-	
-	@Id 
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	
-	@Column(name="id")
+public class City {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int id;
 	
-	@Column(name="position")
-	private String position;
-		
-	@Column(name = "created_date")
-	private LocalDateTime createdDate=LocalDateTime.now();
-		
-	@Column(name = "updated_date")
-	private LocalDateTime updatedDate;
-		
-	@Column(name = "uid")
+	@Column(name = "city_name")
+	private String cityName;
+	
+	@Column(name="uid")
 	private String uid;
 	
-	@Column(name= "is_deleted")
-    private boolean isDeleted=false;
-
-    @Column(name="is_activated")
-    private boolean isActivated;
-	
 	@JsonIgnore
-	@OneToMany(mappedBy = "jobPosition")
+	@OneToMany(mappedBy = "city")
 	private List<JobPosting> jobPostings;
 
 }

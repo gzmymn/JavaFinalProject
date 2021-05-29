@@ -1,10 +1,13 @@
 package kodlamaio.hrms.api.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaio.hrms.business.abstracts.auth.CandidateAuthService;
@@ -18,9 +21,9 @@ import kodlamaio.hrms.entities.dtos.RegisterForEmployerDto;
 @RequestMapping("/api/auth")
 public class AuthController {
 
-	private CandidateAuthService candidateAuthService;
-	private EmployerAuthService employerAuthService;
-	private VerifyService verifyService;
+	private final CandidateAuthService candidateAuthService;
+	private final EmployerAuthService employerAuthService;
+	private final VerifyService verifyService;
 	
 	@Autowired
 	public AuthController(CandidateAuthService candidateAuthService, EmployerAuthService employerAuthService,
@@ -31,20 +34,26 @@ public class AuthController {
 	}
 	
 	@PostMapping("/employer/register")
-	public Result registerForEmployer(@RequestBody RegisterForEmployerDto registerForEmployerDto){
+	public Result registerForEmployer(@RequestBody @Valid RegisterForEmployerDto registerForEmployerDto){
 		
 		return employerAuthService.register(registerForEmployerDto);
 	}
 	
 	@PostMapping("/candidate/register")
-	public Result registerForCandidate(@RequestBody RegisterForCandidateDto registerForCandidateDto){
+	public Result registerForCandidate(@RequestBody @Valid RegisterForCandidateDto registerForCandidateDto){
 		
 		return candidateAuthService.register(registerForCandidateDto);
 	}
 	
 	@GetMapping("/verify")
-	public Result verify(int userId, String activaionCode) {
+	public Result verify(@RequestParam("uid") String uid, @RequestParam("activationCode") String activaionCode) {
 		
-		return verifyService.verify(userId, activaionCode);
+		return verifyService.verify(uid, activaionCode);
+	}
+	
+	@GetMapping("/resend")
+	public Result reSendEmail(@RequestParam("uid") String uid) {
+		
+		return employerAuthService.reSendEmail(uid);
 	}
 }

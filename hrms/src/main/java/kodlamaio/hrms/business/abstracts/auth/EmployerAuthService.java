@@ -1,10 +1,10 @@
 package kodlamaio.hrms.business.abstracts.auth;
 
-import kodlamaio.hrms.core.utilities.results.Result;
+import kodlamaio.hrms.entities.concretes.Employer;
 import kodlamaio.hrms.entities.dtos.RegisterForEmployerDto;
 
-public interface EmployerAuthService {
+public interface EmployerAuthService extends UserAuthService<RegisterForEmployerDto, Employer> {
 
-	Result register(RegisterForEmployerDto registerForEmployerDto);
+	
 	
 }

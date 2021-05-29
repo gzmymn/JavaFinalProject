@@ -23,9 +23,9 @@ public class VerifyManager implements VerifyService {
 	}
 
 	@Override
-	public Result verify(int userId, String activationCode) {
+	public Result verify(String uid, String activationCode) {
 
-		Optional<ActivationCode> activation = activationCodeService.getByUserId(userId).getData();
+		Optional<ActivationCode> activation = activationCodeService.getByUserUid(uid).getData();
 		Result result = subVerify(activation, activationCode);
 		if (!result.isSuccess()) {
 			return result;

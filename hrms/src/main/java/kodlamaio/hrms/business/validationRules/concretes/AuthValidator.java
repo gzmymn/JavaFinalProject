@@ -12,6 +12,7 @@ public class AuthValidator implements AuthValidatorService {
 
 	@Override
 	public Result isPasswordConfirmed(String password, String confirmPassword) {
+		
 		if (password.equals(confirmPassword)) {
 			return new SuccessResult();
 		}
