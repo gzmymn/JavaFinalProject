@@ -32,7 +32,7 @@ public class CandidateManager extends UserManager<Candidate>  implements Candida
 		this.candidateValidatorService=candidateValidatorService;
 		
 	}
-
+	
 	@Override
     public Result add(Candidate candidate) {
 		
@@ -42,11 +42,9 @@ public class CandidateManager extends UserManager<Candidate>  implements Candida
         if (!result.isSuccess()) {
             
         	return result;
-        }
-        
+        }        
     return super.add(candidate);
     }
-
 	
     private Result isIdentityNumberExist(String identityNumber) {
         if (candidateDao.findByNationalIdentity(identityNumber).isPresent()) {
@@ -54,7 +52,6 @@ public class CandidateManager extends UserManager<Candidate>  implements Candida
         }
         return new SuccessResult();
     }
-
     
     private Result isMernisVerified(Candidate candidate) {
         MernisPerson mernisPerson = new MernisPerson(candidate.getFirstName(), candidate.getLastName(),
@@ -63,8 +60,7 @@ public class CandidateManager extends UserManager<Candidate>  implements Candida
         
         if(result){
             return new SuccessResult();
-        }
-        
+        }      
         return new ErrorResult("Kişi doğrulaması yapılamadı!");
     }
 	
