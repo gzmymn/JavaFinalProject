@@ -16,7 +16,6 @@ import kodlamaio.hrms.entities.concretes.Candidate;
 
 @Component
 public class CandidateValidator extends UserValidator implements CandidateValidatorService {
-
 	
 	@Override
 	public Result candidateNullCheck(Candidate candidate) {
@@ -29,8 +28,7 @@ public class CandidateValidator extends UserValidator implements CandidateValida
 		if (super.userNullCheck(candidate).isSuccess() && (firstName==null || firstName.isBlank()) 
 				&& (lastName==null || lastName.isBlank()) 
 				&& (tcNo==null || tcNo.isBlank())
-				&& (birthYear==null)) {
-			
+				&& (birthYear==null)) {			
 			return new ErrorResult("Değerler boş bırakılamaz!");
 		}
 		return new SuccessResult();

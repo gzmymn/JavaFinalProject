@@ -24,14 +24,12 @@ import kodlamaio.hrms.entities.dtos.RegisterForEmployerDto;
 
 @Service
 public class EmployerAuthManager extends UserAuthManager<RegisterForEmployerDto, Employer> implements EmployerAuthService {
-
 	
 	public EmployerAuthManager(AuthValidatorService authValidatorService, UserService<Employer> userService, ActivationCodeService activationCodeService, EmailSenderService emailSenderService) {
         super(authValidatorService, userService, activationCodeService, emailSenderService);
     }
 	@Override
 	public Employer newUserInstance(RegisterForEmployerDto registerForEmployerDto) {
-
 
 		return new Employer(registerForEmployerDto.getCompanyName(), registerForEmployerDto.getWebAddress(), registerForEmployerDto.getPhoneNumber(),
 				registerForEmployerDto.getEmail(), registerForEmployerDto.getPassword());

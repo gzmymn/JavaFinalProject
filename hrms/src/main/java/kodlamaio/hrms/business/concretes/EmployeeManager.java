@@ -14,9 +14,9 @@ public class EmployeeManager extends UserManager<Employee> implements EmployeeSe
 
 	private EmployeeDao employeeDao;
 		
-		@Autowired
-		public EmployeeManager(UserDao<Employee> userDao) {
-			super(userDao);
-			this.employeeDao = (EmployeeDao) userDao;			
-		}
+	@Autowired
+	public EmployeeManager(UserDao<Employee> userDao) {
+		super(userDao);
+		this.employeeDao = (EmployeeDao) userDao;			
+	}
 }

@@ -24,7 +24,6 @@ import kodlamaio.hrms.entities.dtos.RegisterForCandidateDto;
 
 @Service
 public class CandidateAuthManager extends UserAuthManager<RegisterForCandidateDto, Candidate> implements CandidateAuthService{
-
 	
 	public CandidateAuthManager(AuthValidatorService authValidatorService, UserService<Candidate> userService, ActivationCodeService activationCodeService, EmailSenderService emailSenderService) {
 		super(authValidatorService, userService, activationCodeService, emailSenderService);
