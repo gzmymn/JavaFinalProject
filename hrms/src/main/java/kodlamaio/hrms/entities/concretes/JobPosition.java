@@ -47,9 +47,9 @@ public class JobPosition {
 	
 	@Column(name= "is_deleted")
 	private boolean isDeleted=false;
-
-    @Column(name="is_activated")
-    private boolean isActivated;
+	
+	@Column(name="is_activated")
+	private boolean isActivated;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "jobPosition")
