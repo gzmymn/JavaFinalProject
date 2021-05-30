@@ -1,24 +1,13 @@
 package kodlamaio.hrms.business.concretes.auth;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 
 import org.springframework.stereotype.Service;
-
 import kodlamaio.hrms.business.abstracts.ActivationCodeService;
-import kodlamaio.hrms.business.abstracts.CandidateService;
 import kodlamaio.hrms.business.abstracts.UserService;
 import kodlamaio.hrms.business.abstracts.auth.CandidateAuthService;
 import kodlamaio.hrms.business.validationRules.abstracts.AuthValidatorService;
-import kodlamaio.hrms.core.utilities.business.BusinessEngine;
 import kodlamaio.hrms.core.utilities.email.EmailSenderService;
-import kodlamaio.hrms.core.utilities.results.DataResult;
-import kodlamaio.hrms.core.utilities.results.ErrorDataResult;
-import kodlamaio.hrms.core.utilities.results.Result;
-import kodlamaio.hrms.core.utilities.results.SuccessDataResult;
-import kodlamaio.hrms.core.utilities.results.SuccessResult;
-import kodlamaio.hrms.core.utilities.verifyTool.CodeGenerator;
-import kodlamaio.hrms.entities.abstracts.User;
-import kodlamaio.hrms.entities.concretes.ActivationCode;
 import kodlamaio.hrms.entities.concretes.Candidate;
 import kodlamaio.hrms.entities.dtos.RegisterForCandidateDto;
 

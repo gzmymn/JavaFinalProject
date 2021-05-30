@@ -9,5 +9,9 @@ import kodlamaio.hrms.entities.concretes.JobPosting;
 public interface JobPostingService {
 
 	DataResult<List<JobPosting>> getAll();	
-	Result add(JobPosting jobPosting);
+	Result add(JobPosting jobPosting);	
+	Result changeActive(int postingId);
+	DataResult<List<JobPosting>> getAllByActivated();
+	DataResult<List<JobPosting>> getAllByActivatedAndByDay(int day);
+	DataResult<List<JobPosting>> getAllByActivatedAndByEmployer(int employerId);
 }

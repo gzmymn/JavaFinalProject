@@ -3,8 +3,8 @@ package kodlamaio.hrms.business.concretes.auth;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import kodlamaio.hrms.business.abstracts.ActivationCodeService;
 import kodlamaio.hrms.business.abstracts.auth.VerifyService;
 import kodlamaio.hrms.core.utilities.results.ErrorResult;
@@ -17,6 +17,7 @@ public class VerifyManager implements VerifyService {
 
 	private ActivationCodeService activationCodeService;
 	
+	@Autowired
 	public VerifyManager(ActivationCodeService activationCodeService) {
 		
 		this.activationCodeService = activationCodeService;

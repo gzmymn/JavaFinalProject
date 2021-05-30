@@ -1,12 +1,8 @@
 package kodlamaio.hrms.business.concretes.auth;
 
-
-
 import java.time.LocalDateTime;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import kodlamaio.hrms.business.abstracts.ActivationCodeService;
 import kodlamaio.hrms.business.abstracts.UserService;
 import kodlamaio.hrms.business.abstracts.auth.UserAuthService;
@@ -92,7 +88,7 @@ public abstract class UserAuthManager<TDto extends Dto, TUser extends User> impl
 		
 		Optional<ActivationCode> updateResult=activationCodeService.getByUserUid(uid).getData();
 		if (updateResult.get().isConfirmed()) {
-			return new ErrorResult("Kod oluşturulamıyr, öncelikle kullanıcının doğrulanması gerekmektedir.");	
+			return new ErrorResult("Kod oluşturulamıyor, öncelikle kullanıcının doğrulanması gerekmektedir.");	
 					
 		}
 		

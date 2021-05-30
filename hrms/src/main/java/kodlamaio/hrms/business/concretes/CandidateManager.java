@@ -1,10 +1,7 @@
 package kodlamaio.hrms.business.concretes;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Service;
-
-
 import kodlamaio.hrms.business.abstracts.CandidateService;
 import kodlamaio.hrms.business.validationRules.abstracts.CandidateValidatorService;
 import kodlamaio.hrms.core.adapters.UserRealCheckService;
@@ -20,9 +17,9 @@ import kodlamaio.hrms.entities.concretes.Candidate;
 @Service
 public class CandidateManager extends UserManager<Candidate>  implements CandidateService {
 
-	private CandidateDao candidateDao;
-	private UserRealCheckService userRealCheckService;
-	private CandidateValidatorService candidateValidatorService;
+	private final CandidateDao candidateDao;
+	private final UserRealCheckService userRealCheckService;
+	private final CandidateValidatorService candidateValidatorService;
 	
 	@Autowired
 	public CandidateManager(UserDao<Candidate> userDao, UserRealCheckService userRealCheckService, CandidateValidatorService candidateValidatorService) {
@@ -42,7 +39,7 @@ public class CandidateManager extends UserManager<Candidate>  implements Candida
             
         	return result;
         }        
-    return super.add(candidate);
+        return super.add(candidate);
     }
 	
     private Result isIdentityNumberExist(String identityNumber) {

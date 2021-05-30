@@ -21,7 +21,7 @@ public class EmployerValidator extends UserValidator implements EmployerValidato
 		if (super.userNullCheck(employer).isSuccess()&&(compnayName==null || compnayName.isBlank()) 
 				&& (webAddress==null || webAddress.isBlank())
 				&& (phoneNumber==null || phoneNumber.isBlank())){
-			return new ErrorResult("Değerler boş olamaz!");
+			return new ErrorResult("Alanlar boş olamaz!");
 		}
 		return new SuccessResult();
 	}

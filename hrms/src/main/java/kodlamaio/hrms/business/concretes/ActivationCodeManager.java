@@ -35,7 +35,7 @@ public class ActivationCodeManager implements ActivationCodeService{
 	@Override
 	public Result add(ActivationCode activationCode) {
 		
-		activationCode.setExprationDate(LocalDateTime.now().plusMinutes(10));
+		activationCode.setExprationDate(LocalDateTime.now().plusMinutes(15));
 		activationCode.setUid(CodeGenerator.generateUuidCode());
 		activationCodeDao.save(activationCode);
 		

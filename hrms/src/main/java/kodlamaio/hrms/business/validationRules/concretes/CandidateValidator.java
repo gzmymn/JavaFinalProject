@@ -1,13 +1,8 @@
 package kodlamaio.hrms.business.validationRules.concretes;
 
 import java.sql.Date;
-import java.time.LocalDate;
-
-
 import org.springframework.stereotype.Component;
-
 import com.google.common.base.Strings;
-
 import kodlamaio.hrms.business.validationRules.abstracts.CandidateValidatorService;
 import kodlamaio.hrms.core.utilities.results.ErrorResult;
 import kodlamaio.hrms.core.utilities.results.Result;
@@ -25,19 +20,19 @@ public class CandidateValidator extends UserValidator implements CandidateValida
 		String tcNo=candidate.getNationalIdentity();
 		Date birthYear=candidate.getDateOfBirth();
 		
-		if (super.userNullCheck(candidate).isSuccess() && (firstName==null || firstName.isBlank()) 
-				&& (lastName==null || lastName.isBlank()) 
-				&& (tcNo==null || tcNo.isBlank())
-				&& (birthYear==null)) {			
-			return new ErrorResult("Değerler boş bırakılamaz!");
-		}
-		return new SuccessResult();
+		//if (super.userNullCheck(candidate).isSuccess() && (firstName==null || firstName.isBlank()) 
+		//		&& (lastName==null || lastName.isBlank()) 
+		//		&& (tcNo==null || tcNo.isBlank())
+		//		&& (birthYear==null)) {			
+		//	return new ErrorResult("Değerler boş bırakılamaz!");
+		//}
+		//return new SuccessResult();
 		
-		//if (!super.userNullCheck(candidate).isSuccess() || (Strings.isNullOrEmpty(firstName)) ||
-        //        (Strings.isNullOrEmpty(lastName)) || (Strings.isNullOrEmpty(tcNo)) || birthYear == null) {
-        //    return new ErrorResult("");
-        //}
-        //return new SuccessResult();
+		if (!super.userNullCheck(candidate).isSuccess() || (Strings.isNullOrEmpty(firstName)) ||
+                (Strings.isNullOrEmpty(lastName)) || (Strings.isNullOrEmpty(tcNo)) || birthYear == null) {
+            return new ErrorResult("Alanlar boş bırakılamaz!");
+        }
+        return new SuccessResult();
 	}
 
 	@Override

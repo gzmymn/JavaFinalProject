@@ -28,14 +28,12 @@ public class City {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "id")
-	private int id;
+	@Column(name = "city_id")
+	private int city_id;
 	
 	@Column(name = "city_name")
 	private String cityName;
 	
-	@Column(name="uid")
-	private String uid;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy = "city")

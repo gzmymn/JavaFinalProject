@@ -20,10 +20,16 @@ import lombok.NoArgsConstructor;
 @PrimaryKeyJoinColumn(name = "id")
 @Table(name = "employees")
 public class Employee extends User {
+	
+	public Employee(String firstName, String lastName, String email, String password) {
+		super(email, password);
+		this.firstName=firstName;
+		this.lastName=lastName;
+	}
 
 	@Column(name = "first_name")
 	private String firstName;
 	
 	@Column(name = "last_name")
-	private String lastNameString;
+	private String lastName;
 }

@@ -1,9 +1,6 @@
 package kodlamaio.hrms.entities.concretes;
 
-import java.sql.Date;
-
 import java.time.LocalDateTime;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,9 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 import org.hibernate.annotations.Type;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,6 +25,15 @@ public class JobPosting {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
+	
+	//@Column(name="employer_id")
+	//private int employer_id;
+	
+	//@Column(name="employer_id")
+	//private int job_position_id;
+	
+	//@Column(name="city_id")
+	//private int city_id;
 	
 	@Column(name = "uid")
 	private String uid;
