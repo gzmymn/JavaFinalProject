@@ -70,4 +70,13 @@ public class JobPostingsController {
 		return ResponseEntity.ok(result);
 	}
 	
+	@GetMapping("/getjobpostingdetails")
+	public ResponseEntity<?> getJobPostingDetails(){
+		Result result = this.jobPostingService.getJobPostingDetails();
+		if (!result.isSuccess()) {
+			return ResponseEntity.badRequest().body(result);
+		}
+		return ResponseEntity.ok(result);
+	}
+	
 }

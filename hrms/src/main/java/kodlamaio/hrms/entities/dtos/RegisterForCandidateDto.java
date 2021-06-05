@@ -1,7 +1,6 @@
 package kodlamaio.hrms.entities.dtos;
 
 import java.sql.Date;
-
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 

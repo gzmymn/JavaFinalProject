@@ -56,7 +56,7 @@ public abstract class UserAuthManager<TDto extends Dto, TUser extends User> impl
 		}
 		
 		emailSenderService.send("Doğrulama için linke tıklayınız : http://localhost:8080/api/auth/verify?activationCode="+code+"&uid="+user.getUid());
-        emailSenderService.send("Doğrulama için linke tıklayınız : http://localhost:8080/api/auth/resend?uid="+user.getUid());
+        emailSenderService.send("Tekrar kod göndermek için linke tıklayınız : http://localhost:8080/api/auth/resend?uid="+user.getUid());
 		
         return new SuccessResult("Kullanıcı eklendi.");
 	}
@@ -101,7 +101,6 @@ public abstract class UserAuthManager<TDto extends Dto, TUser extends User> impl
 		}
 		return new SuccessResult();
 	}
-	
 	
 
 }

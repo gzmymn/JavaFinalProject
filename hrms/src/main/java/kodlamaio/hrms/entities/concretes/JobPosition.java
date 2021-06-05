@@ -2,6 +2,7 @@ package kodlamaio.hrms.entities.concretes;
 
 
 import java.time.LocalDateTime;
+
 import java.util.List;
 
 import javax.persistence.Column;
@@ -25,7 +26,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @Table(name="job_positions")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","jobPostings"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler","jobPostings", "workplaceCandidates"})
 public class JobPosition {	
 	
 	@Id 
@@ -46,7 +47,7 @@ public class JobPosition {
 	private String uid;
 	
 	@Column(name= "is_deleted")
-	private boolean isDeleted=false;
+	private boolean isDeleted;
 	
 	@Column(name="is_activated")
 	private boolean isActivated;
@@ -54,5 +55,9 @@ public class JobPosition {
 	@JsonIgnore
 	@OneToMany(mappedBy = "jobPosition")
 	private List<JobPosting> jobPostings;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "jobPosition")
+	private List<WorkplaceCandidate> workplaceCandidates;
 
 }

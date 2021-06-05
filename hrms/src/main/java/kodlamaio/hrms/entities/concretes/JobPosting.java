@@ -26,14 +26,17 @@ public class JobPosting {
 	@Column(name = "id")
 	private int id;
 	
-	//@Column(name="employer_id")
-	//private int employer_id;
+	@ManyToOne()
+	@JoinColumn(name="employer_id")
+	private Employer employer;		
 	
-	//@Column(name="employer_id")
-	//private int job_position_id;
+	@ManyToOne()
+	@JoinColumn(name="job_position_id")
+	private JobPosition jobPosition;	
 	
-	//@Column(name="city_id")
-	//private int city_id;
+	@ManyToOne()
+	@JoinColumn(name="city_id")
+	private City city;	
 	
 	@Column(name = "uid")
 	private String uid;
@@ -42,8 +45,8 @@ public class JobPosting {
 	@Type(type = "text")
 	private String jobDefinition;
 	
-	@Column(name = "number_of_open_position")
-	private int numberOfOpenPosition;
+	@Column(name = "quota")
+	private int quota;
 	
 	@Column(name = "created_date")
 	private LocalDateTime createdDate=LocalDateTime.now();;
@@ -52,7 +55,7 @@ public class JobPosting {
 	private LocalDateTime applicationDeadline;
 	
 	@Column(name= "is_deleted")
-    private boolean isDeleted=false;
+    private boolean isDeleted;
 
     @Column(name="is_activated")
     private boolean isActivated;
@@ -67,17 +70,5 @@ public class JobPosting {
 	private Double maxSalary;
 	
 	
-	@ManyToOne()
-	@JoinColumn(name="employer_id")
-	private Employer employer;	
 	
-	
-	@ManyToOne()
-	@JoinColumn(name="job_position_id")
-	private JobPosition jobPosition;
-	
-	
-	@ManyToOne()
-	@JoinColumn(name="city_id")
-	private City city;
 }

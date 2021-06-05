@@ -18,7 +18,7 @@ public class EmployerValidator extends UserValidator implements EmployerValidato
 		String webAddress=employer.getWebAddress();
 		String phoneNumber=employer.getPhoneNumber();
 		
-		if (super.userNullCheck(employer).isSuccess()&&(compnayName==null || compnayName.isBlank()) 
+		if (!super.userNullCheck(employer).isSuccess()&&(compnayName==null || compnayName.isBlank()) 
 				&& (webAddress==null || webAddress.isBlank())
 				&& (phoneNumber==null || phoneNumber.isBlank())){
 			return new ErrorResult("Alanlar boş olamaz!");

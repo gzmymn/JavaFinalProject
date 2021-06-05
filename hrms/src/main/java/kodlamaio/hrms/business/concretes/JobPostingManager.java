@@ -15,6 +15,7 @@ import kodlamaio.hrms.core.utilities.results.SuccessResult;
 import kodlamaio.hrms.core.utilities.verifyTool.CodeGenerator;
 import kodlamaio.hrms.dataAccess.abstracts.JobPostingDao;
 import kodlamaio.hrms.entities.concretes.JobPosting;
+import kodlamaio.hrms.entities.dtos.JobPostingDetailsDto;
 
 @Service
 public class JobPostingManager implements JobPostingService {
@@ -83,6 +84,12 @@ public class JobPostingManager implements JobPostingService {
 			return new ErrorResult("İş ilanı mevcut değildir!");
 		}
 		return new SuccessResult();
+	}
+
+	@Override
+	public DataResult<List<JobPostingDetailsDto>> getJobPostingDetails() {
+		
+		return new SuccessDataResult<List<JobPostingDetailsDto>>(jobPostingDao.getJobPostingDetails());
 	}
 
 }

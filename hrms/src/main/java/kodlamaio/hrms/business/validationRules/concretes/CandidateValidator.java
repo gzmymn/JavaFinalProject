@@ -40,7 +40,7 @@ public class CandidateValidator extends UserValidator implements CandidateValida
 		if (nationalIdentity.length()==11) {
 			return new SuccessResult();
 		}
-		return new ErrorResult("Tc No geeçrsiz!");
+		return new ErrorResult("Tc No geçersiz!");
 	}
 
 }
