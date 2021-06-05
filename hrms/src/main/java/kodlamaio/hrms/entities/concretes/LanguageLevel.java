@@ -31,7 +31,7 @@ public class LanguageLevel {
 
     @NotBlank
     @NotNull
-    @Column(name="languages_level_name")
+    @Column(name="language_level_name")
     private String levelName;
 
     @JsonIgnore

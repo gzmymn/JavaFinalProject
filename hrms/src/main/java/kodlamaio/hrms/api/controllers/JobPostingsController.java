@@ -67,7 +67,7 @@ public class JobPostingsController {
 		if (!result.isSuccess()) {
 			return ResponseEntity.badRequest().body(result);
 		}
-		return ResponseEntity.ok(result);
+		return ResponseEntity.ok(result); 
 	}
 	
 	@GetMapping("/getjobpostingdetails")

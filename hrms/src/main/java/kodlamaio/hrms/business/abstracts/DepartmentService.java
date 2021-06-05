@@ -8,6 +8,6 @@ import kodlamaio.hrms.entities.concretes.Department;
 
 public interface DepartmentService {
 
-	DataResult<List<Department>> getall();
+	DataResult<List<Department>> getAll();
 	Result add(Department department);
 }

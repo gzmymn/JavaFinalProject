@@ -62,7 +62,7 @@ public class JobPosting {
     private boolean isActivated;
     
     @Column(name = "deleted_date")
-    private LocalDate deletedDate;
+    private LocalDateTime deletedDate;
 	
 	@Column(name="min_salary")
 	private Double minSalary;
